@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
-import 'package:provider/provider.dart';
-import 'package:trade_accounting/src/provider/hive_provider.dart';
-import 'package:trade_accounting/src/services/hive_init.dart';
+import 'package:trade_accounting/src/core/exported_packages.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +21,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  RouteGenerator route = RouteGenerator();
   @override
   void dispose() {
     Hive.close();
@@ -32,6 +31,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      initialRoute: "/",
+      onGenerateRoute: route.routeGenerate,
     );
   }
 }
