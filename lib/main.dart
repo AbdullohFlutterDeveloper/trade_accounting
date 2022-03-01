@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trade_accounting/src/core/exported_packages.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await HiveInitialize.init();
@@ -9,8 +8,9 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => HiveProvider()),
+        ChangeNotifierProvider(create: (_) => BottomNavBarProvider())
       ],
-      child:  MyApp(),
+      child: MyApp(),
     ),
   );
 }
